@@ -1,0 +1,22 @@
+{
+  "name": "cv",
+  "version": "1.0.0",
+  "description": "",
+  "main": "js/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "beefy index.js",
+    "dist": "mkdist.sh"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "angular": "^1.6.3",
+    "angular-materialize": "^0.2.2",
+    "angular-route": "^1.6.3",
+    "angular-sanitize": "^1.6.4",
+    "angularfire": "^2.3.0",
+    "materialize-css": "^0.98.1",
+    "showdown": "^1.6.4"
+  }
+}

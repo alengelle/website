@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fr-FR" ng-app="MyApp">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+  <title>Annick Lengellé</title>
+
+  <link rel="icon" type="image/png" href="favicon.png" />
+
+  <meta property="og:url" content="http://annick.lengelle.fr/#/{{page}}">
+  <meta ng-if="firevar_page_name.$value" property="og:site_name" content="Annick Lengelle - {{firevar_page_name.$value}}">
+  <meta ng-if=" ! firevar_page_name.$value" property="og:site_name" content="Annick Lengelle">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="http://annick.lengelle.fr/img/logo.png" />
+  <meta ng-if="firevar_page_video.$value" property="og:video" content="{{firevar_page_video.$value}}">
+  <meta property="og:description" content="{{firevar_page_desc.$value || 'Thérapeute holistique, coach bien-être. Séances individuelles et thérapies de couple, stages et conférences.'}}">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+  <meta name="verify-v1" content="CZ7aAp/CuYyMk3J83QE0t6h5Sd4NTIkO/P2BXajnh5Y=">
+  <meta name="Content-Language" content="fr">
+  <meta name="Description" content="{{firevar_page_desc.$value || 'Thérapeute holistique, coach bien-être. Séances individuelles et thérapies de couple, stages et conférences.'}}">
+  <meta name="Keywords" content="{{firevar_page_keywords.$value || 'psychothérapeute, psychothérapie, annick, lengelle, lengellé, groupe, stage, conférence, seminaire, sorede, perpignan, développement personnel, couple, conference, desert, Thich Nhat Hanh, retraite, psychotherapeute, psychotherapie'}}">
+  <meta name="Identifier-Url" content="http://annick.lengelle.fr/#/{{page}}">
+  <meta name="Revisit-After" content="7 days">
+  <meta name="Robots" content="all">
+  <meta name="Geography" content="sorede, perpignan, paris, 66690">
+
+  <meta ng-if="firevar_page_name.$value" itemprop="name" content="Annick Lengelle - {{firevar_page_name.$value}}">
+  <meta ng-if=" ! firevar_page_name.$value" itemprop="name" content="Annick Lengelle">
+  <meta itemprop="description" content="{{firevar_page_desc.$value || 'Thérapeute holistique, coach bien-être. Séances individuelles et thérapies de couple, stages et conférences.'}}">
+  <meta itemprop="type" content="Article">
+
+  <link rel="shortcut icon" href="/img/logo.png">
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="node_modules/materialize-css/dist/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+
+  <script type="text/javascript" async="" src="http://www.google-analytics.com/ga.js"></script><script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-39235384-1']);
+    _gaq.push(['_setDomainName', 'lengelle.fr']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+</head>
+
+<body>
+  <div id="page">
+    <div id="mandala"></div>
+
+    <div id="entete">
+      <a style="display: inline" rel="start home" href="#/" title="Accueil du site" class="accueil"><img alt="" src="img/logo.png" style="height:60px;width:61px;" /><strong>Annick Lengellé</strong></a>
+    </div>
+
+    <div ng-view autoscroll></div>
+
+    <div style="clear:both;"></div>
+  </div>
+
+  <div id="pied">
+    Créé par <em>Arnaud Richard</em> avec <a target="_blank" href="https://angularjs.org/">AngularJS</a> et <a target="_blank" href="http://materializecss.com">Materialize</a> - <em>2017</em>.
+    <div ng-show="user">Connecté en tant que {{user.displayName}} ({{user.email}}) <a ng-click="signout()">[deconnexion]</a></div><img ng-if=" ! user" alt="" src="img/logo.png" style="height:16px;width:16px;" ng-click="signin()" />
+  </div>
+
+  <!--  Scripts-->
+  <script src="https://www.gstatic.com/firebasejs/4.0.0/firebase.js"></script>
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="node_modules/materialize-css/dist/js/materialize.min.js"></script>
+  <script src="node_modules/angular/angular.min.js"></script>
+  <script src="node_modules/angularfire/dist/angularfire.min.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<div ng-repeat="(ind, bloc) in blocs">
+    <nav ng-if="$root.isadmin" ng-class="{'nav-extended': edit_id == ind}">
+        <div class="nav-wrapper">
+            <a class="brand-logo">
+                <div ng-if="bloc.new" style="display:inline-block; width:100%" input-field>
+                    <input type="text" ng-model="bloc.id" />
+                </div>
+                <div ng-if=" ! bloc.new" style="display:inline-block; width:100%" input-field>
+                    <select ng-model="bloc.id" ng-change="change_bloc(ind)" material-select watch>
+                        <optgroup label="Nouveau">
+                            <option value="new_empty">Nouveau (vide)</option>
+                            <option value="new_stage">Nouveau stage / conférence</option>
+                        </optgroup>
+                        <optgroup label="Existant">
+                            <option ng-repeat="bloc_name in $root.blocs_names" ng-value="bloc_name">{{bloc_name}}</option>
+                        </optgroup>
+                    </select>
+                </div>
+            </a>
+
+            <a ng-if="isdropdown" class="right dropdown-button" data-activates="dropdown_{{page}}_{{ind}}" dropdown data-hover="true"><i class="material-icons">reorder</i></a>
+
+            <ul ng-class="{'dropdown-content': isdropdown, 'right': ! isdropdown}" id="dropdown_{{page}}_{{ind}}">
+                <li ng-if="ind > 0"><a><i class="material-icons" ng-click="move_up(ind)">arrow_upward</i> {{isdropdown ? 'Remonter le bloc':''}}</a></li>
+                <li ng-if="ind < blocs.length-1"><a><i class="material-icons" ng-click="move_down(ind)">arrow_downward</i> {{isdropdown ? 'Descendre le bloc':''}}</a></li>
+                <li ng-if="isdropdown" class="divider"></li>
+                <li><a><i class="material-icons" ng-click="edit_bloc(ind)">edit</i> {{isdropdown ? 'Modifier le bloc':''}}</a></li>
+                <li><a><i class="material-icons" ng-click="remove_bloc(ind)" style="color:red">remove_circle</i> {{isdropdown ? 'Retirer le bloc':''}}</a></li>
+                <li><a><i class="material-icons" ng-click="add_bloc(ind)" style="color:green">add_circle</i> {{isdropdown ? 'Ajouter un bloc':''}}</a></li>
+            </ul>
+        </div>
+
+        <div ng-if="edit_id == ind" class="nav-content">
+            <ul class="tabs tabs-transparent">
+                <li class="tab"><a ng-class="{'active': edit_mode != 'apercu'}" ng-click="select_mode('edition')">Edition</a></li>
+                <li class="tab"><a ng-class="{'active': edit_mode == 'apercu'}" ng-click="select_mode('apercu')">Apercu</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div ng-if="$root.isadmin && edit_id == ind" class="admin-area">
+        <div ng-if="edit_mode == 'apercu'" markdown="bloc.text" class="markdown"></div>
+        <div ng-if="edit_mode != 'apercu'" class="row">
+            <div class="col s12" input-field>
+                <textarea id="textarea1" data-original-height="0" class="materialize-textarea" ng-model="bloc.text"></textarea>
+            </div>
+        </div>
+    </div>
+    <div ng-if="$root.isadmin && edit_id == ind" class="admin-actions">
+        <span style="float:right">
+            <a class="waves-effect waves-teal btn-flat" ng-click="edit_cancel()">Annuler</a>
+            <a class="waves-effect waves-light btn" ng-click="edit_save()" ng-disabled=" ! bloc.id">Enregistrer <i class="material-icons">send</i></a>
+        </span>
+    </div>
+    <div ng-if="! $root.isadmin && edit_id != ind" markdown="bloc.text" class="markdown"></div>
+    <div ng-if="$root.isadmin && edit_id != ind" markdown="bloc.text" class="markdown admin-area-inactive"></div>
+    <hr />
+</div>

@@ -1,0 +1,17 @@
+<div ng-if="isadmin" class="row">
+    <firevar name="page_name" label="nom de la page" ng-model="$root.firevar_page_name" class="col s12" />
+    <firevar name="page_description" label="description" ng-model="$root.firevar_page_desc" class="col s12" />
+    <firevar name="page_keywords" label="mots-clés" ng-model="$root.firevar_page_keywords" class="col s12" />
+    <firevar name="page_video" label="vidéo associée" ng-model="$root.firevar_page_video" class="col s12" />
+</div>
+
+<div class="row">
+
+    <div id="conteneur" class="col s8">
+        <blocs page="page" />
+    </div>
+
+    <div id="navigation" class="menu col s4">
+        <blocs page="'menu'" isdropdown="true" />
+    </div>
+</div>

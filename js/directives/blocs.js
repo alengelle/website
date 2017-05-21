@@ -11,6 +11,8 @@ module.exports = function(myAppModule) {
                 var page = $scope.page || "accueil"
                 var db = firebase.database()
 
+                $scope.uniq = Math.floor(Math.random() * 999999)
+
                 $scope.blocs = []
                 $scope.layout = []
                 $scope.edit_id = -1

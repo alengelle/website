@@ -1,7 +1,7 @@
 <div ng-repeat="(ind, bloc) in blocs">
     <nav ng-if="$root.isadmin" ng-class="{'nav-extended': edit_id == ind}">
         <div class="nav-wrapper">
-            <a class="brand-logo">
+            <a style="display:inline-block;padding:0">
                 <div ng-if="bloc.new" style="display:inline-block; width:100%" input-field>
                     <input type="text" ng-model="bloc.id" />
                 </div>
@@ -18,15 +18,24 @@
                 </div>
             </a>
 
-            <a ng-if="isdropdown" class="right dropdown-button" data-activates="dropdown_{{page}}_{{ind}}" dropdown data-hover="true"><i class="material-icons">reorder</i></a>
+            <a ng-if="isdropdown" class="right dropdown-button" data-activates="dropdown_{{page}}_{{ind}}_{{uniq}}" dropdown><i class="material-icons">reorder</i></a>
+            <a ng-if=" ! isdropdown" class="right dropdown-button button-collapse" data-activates="dropdown_{{page}}_{{ind}}_{{uniq}}" dropdown><i class="material-icons">reorder</i></a>
+            <ul class="dropdown-content" id="dropdown_{{page}}_{{ind}}_{{uniq}}">
+                <li ng-click="move_up(ind)" ng-if="ind > 0"><a><i class="material-icons">arrow_upward</i> Remonter le bloc</a></li>
+                <li ng-click="move_down(ind)" ng-if="ind < blocs.length-1"><a><i class="material-icons">arrow_downward</i> Descendre le bloc</a></li>
+                <li class="divider"></li>
+                <li ng-click="edit_bloc(ind)"><a><i class="material-icons">edit</i> Modifier le bloc</a></li>
+                <li ng-click="remove_bloc(ind)"><a><i class="material-icons" style="color:red">remove_circle</i> Retirer le bloc</a></li>
+                <li ng-click="add_bloc(ind)"><a><i class="material-icons" style="color:green">add_circle</i> Ajouter un bloc</a></li>
+            </ul>
 
-            <ul ng-class="{'dropdown-content': isdropdown, 'right': ! isdropdown}" id="dropdown_{{page}}_{{ind}}">
-                <li ng-if="ind > 0"><a><i class="material-icons" ng-click="move_up(ind)">arrow_upward</i> {{isdropdown ? 'Remonter le bloc':''}}</a></li>
-                <li ng-if="ind < blocs.length-1"><a><i class="material-icons" ng-click="move_down(ind)">arrow_downward</i> {{isdropdown ? 'Descendre le bloc':''}}</a></li>
+            <ul ng-if=" ! isdropdown" class="right hide-on-med-and-down">
+                <li ng-if="ind > 0"><a><i class="material-icons" ng-click="move_up(ind)">arrow_upward</i></a></li>
+                <li ng-if="ind < blocs.length-1"><a><i class="material-icons" ng-click="move_down(ind)">arrow_downward</i></a></li>
                 <li ng-if="isdropdown" class="divider"></li>
-                <li><a><i class="material-icons" ng-click="edit_bloc(ind)">edit</i> {{isdropdown ? 'Modifier le bloc':''}}</a></li>
-                <li><a><i class="material-icons" ng-click="remove_bloc(ind)" style="color:red">remove_circle</i> {{isdropdown ? 'Retirer le bloc':''}}</a></li>
-                <li><a><i class="material-icons" ng-click="add_bloc(ind)" style="color:green">add_circle</i> {{isdropdown ? 'Ajouter un bloc':''}}</a></li>
+                <li><a><i class="material-icons" ng-click="edit_bloc(ind)">edit</i></a></li>
+                <li><a><i class="material-icons" ng-click="remove_bloc(ind)" style="color:red">remove_circle</i></a></li>
+                <li><a><i class="material-icons" ng-click="add_bloc(ind)" style="color:green">add_circle</i></a></li>
             </ul>
         </div>
 

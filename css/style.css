@@ -151,12 +151,29 @@ hr {
   font-size: 0.5em;
 }
 
-.dropdown-content li > a {
+.dropdown-content li > a, .side-nav .dropdown-content li > a {
   font-size: 12px;
+  line-height: 22px;
+  padding: 14px 16px;
+  height: inherit;
 }
 
-.dropdown-content li > a > i {
+.dropdown-content li > a > i, .side-nav .dropdown-content li > a > i {
   margin: 0 5px 0 0;
+  line-height: inherit;
+  height: inherit;
+}
+
+/*
+.dropdown-content li:hover, .dropdown-content li.active, .dropdown-content li.selected
+*/
+
+.dropdown-content li a:hover {
+    color: #000;
+}
+
+#navnav {
+  overflow-y: visible;
 }
 
 nav {

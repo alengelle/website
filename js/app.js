@@ -61,7 +61,7 @@ angular.module('MyApp', [
   })
 
   $rootScope.signin = function() {
-    $rootScope.auth.$signInWithPopup("google").then(function(firebaseUser) {
+    $rootScope.auth.$signInWithRedirect("google").then(function(firebaseUser) {
       $rootScope.user = firebaseUser.user.uid
     }).catch(function(error) {
       console.log("Authentication failed:", error)

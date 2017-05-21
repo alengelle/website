@@ -19,6 +19,11 @@ module.exports = function() {
       regex: /\[facebook\|(.*?)\]/g,
       replace: '<iframe src="http://www.facebook.com/plugins/like.php?href=https://www.facebook.com/therapie.Annick.Lengelle&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;font=verdana&amp;colorscheme=dark" scrolling="no" frameborder="0" allowtransparency="true" style="border:none; overflow:hidden; width:273px; height:100px"></iframe>'
   }
+  var responsive_img = {
+      type: 'output',
+      regex: /<img src="(.*)"/g,
+      replace: '<img src="$1" class="responsive-img"'
+  }
   var classify = {
       type: 'lang',
       filter: function (text, converter, options) {
@@ -27,5 +32,5 @@ module.exports = function() {
           })
       }
   }
-  return [floatleft, floatcenter, floatright, facebook, classify];
+  return [floatleft, floatcenter, floatright, facebook, classify, responsive_img];
 }
